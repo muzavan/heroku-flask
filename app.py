@@ -160,6 +160,7 @@ def send_generic(recipient_id):
                 "elements":[
                    {
                     "title":"Welcome to Peter\'s Hats",
+                    "subtitle":"This is subtitle",
                     "default_action": {
                       "type": "web_url",
                       "url": "https://www.facebook.com"
@@ -167,6 +168,7 @@ def send_generic(recipient_id):
                   },
                     {
                         "title": "Welcome to Humbala",
+                        "subtitle": "This is subtitle humbala",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.google.com"
