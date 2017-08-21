@@ -40,7 +40,7 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     if message_text == "hi":
-                        send_message(sender_id,"Hi too!")
+                        send_reply(sender_id)
 
                     else:
                         send_message(sender_id, "roger that!")
@@ -73,6 +73,39 @@ def send_message(recipient_id, message_text):
         },
         "message": {
             "text": message_text
+        }
+    })
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+
+def send_reply(recipient_id):
+
+    log("sending message to {recipient}".format(recipient=recipient_id))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Search",
+                    "payload": "RED",
+                    "image_url": "http://example.com/img/red.png"
+                },
+                {
+                    "content_type": "location"
+                },
+            ]
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
