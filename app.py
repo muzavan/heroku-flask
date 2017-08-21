@@ -41,7 +41,8 @@ def webhook():
 
                     if message_text == "hi":
                         send_reply(sender_id)
-
+                    elif message_text == "ha":
+                        send_generic(sender_id)
                     else:
                         send_message(sender_id, "roger that!")
 
@@ -113,6 +114,83 @@ def send_reply(recipient_id):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
+
+def send_generic(recipient_id):
+
+    log("sending message to {recipient}".format(recipient=recipient_id))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"generic",
+                "elements":[
+                   {
+                    "title":"Welcome to Peter\'s Hats",
+                    "image_url":"https://petersfancybrownhats.com/company_image.png",
+                    "subtitle":"We\'ve got the right hat for everyone.",
+                    "default_action": {
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                    },
+                    "buttons":[
+                      {
+                        "type":"web_url",
+                        "url":"https://petersfancybrownhats.com",
+                        "title":"View Website"
+                      },{
+                        "type":"postback",
+                        "title":"Start Chatting",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                      }
+                    ]
+                  },
+                    {
+                        "title": "Welcome to Humbala",
+                        "image_url": "https://petersfancybrownhats.com/company_image.png",
+                        "subtitle": "We\'ve got the right hat for everyone.",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        },
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": "https://petersfancybrownhats.com",
+                                "title": "View Website"
+                            }, {
+                                "type": "postback",
+                                "title": "Start Chatting",
+                                "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                            }
+                        ]
+                    }
+                ]
+              }
+            }
+        }
+    })
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+
 
 
 def log(message):  # simple wrapper for logging to stdout on heroku
