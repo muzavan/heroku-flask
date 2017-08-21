@@ -167,13 +167,21 @@ def send_generic(recipient_id):
                     }
                   },
                     {
-                        "title": "Welcome to Humbala",
-                        "subtitle": "This is subtitle humbala",
+                        "title": "Welcome to Peter\'s Hats #2",
+                        "subtitle": "This is subtitle",
                         "default_action": {
                             "type": "web_url",
-                            "url": "https://www.google.com"
+                            "url": "https://www.facebook.com"
                         }
-                    }
+                    },
+                    {
+                        "title": "Welcome to Peter\'s Hats #3",
+                        "subtitle": "This is subtitle",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.facebook.com"
+                        }
+                    },
                 ]
               }
             }
