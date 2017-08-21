@@ -94,7 +94,7 @@ def send_whitelist(recipient_id):
     data = json.dumps({
         "whitelisted_domains" : ["https://petersfancyapparel.com"],
     })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    r = requests.post("https://graph.facebook.com/v2.6/me/messenger_profile", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
