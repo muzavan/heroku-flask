@@ -44,7 +44,7 @@ def webhook():
                     elif message_text == "ha":
                         send_generic(sender_id)
                     elif message_text == "hu":
-                        send_whitelist()
+                        send_whitelist(recipient_id)
                     else:
                         send_message(sender_id, "roger that!")
 
@@ -83,7 +83,7 @@ def send_message(recipient_id, message_text):
         log(r.status_code)
         log(r.text)
 
-def send_whitelist():
+def send_whitelist(recipient_id):
     log("send whitelist")
     params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
@@ -92,6 +92,9 @@ def send_whitelist():
         "Content-Type": "application/json"
     }
     data = json.dumps({
+        "recipient" : {
+            "id" : recipient_id
+        },
         "setting_type" : "domain_whitelisting",
         "whitelisted_domains" : ["https://petersfancyapparel.com"],
         "domain_action_type": "add"
