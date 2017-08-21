@@ -142,7 +142,7 @@ def send_generic(recipient_id):
                     "default_action": {
                       "type": "web_url",
                       "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-                      "messenger_extensions": true,
+                      "messenger_extensions": True,
                       "webview_height_ratio": "tall",
                       "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
                     },
@@ -165,7 +165,7 @@ def send_generic(recipient_id):
                         "default_action": {
                             "type": "web_url",
                             "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-                            "messenger_extensions": true,
+                            "messenger_extensions": True,
                             "webview_height_ratio": "tall",
                             "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
                         },
