@@ -95,6 +95,7 @@ def send_reply(recipient_id):
             "id": recipient_id
         },
         "message": {
+            "text" : "This is a reply",
             "quick_replies": [
                 {
                     "content_type": "text",
