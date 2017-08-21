@@ -162,20 +162,14 @@ def send_generic(recipient_id):
                     "title":"Welcome to Peter\'s Hats",
                     "default_action": {
                       "type": "web_url",
-                      "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-                      "messenger_extensions": True,
-                      "webview_height_ratio": "tall",
-                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                      "url": "https://www.facebook.com"
                     }
                   },
                     {
                         "title": "Welcome to Humbala",
                         "default_action": {
                             "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-                            "messenger_extensions": True,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            "url": "https://www.google.com"
                         }
                     }
                 ]
