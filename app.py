@@ -92,7 +92,7 @@ def send_whitelist(recipient_id):
         "Content-Type": "application/json"
     }
     data = json.dumps({
-        "whitelisted_domains" : ["https://petersfancyapparel.com"],
+        "whitelisted_domains" : ["https://petersfancyapparelx.com"],
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messenger_profile", params=params, headers=headers, data=data)
     if r.status_code != 200:
@@ -166,7 +166,7 @@ def send_generic(recipient_id):
                         "subtitle": "This is subtitle",
                         "default_action": {
                             "type": "web_url",
-                            "url": "https://www.facebook.com"
+                            "url": "https://petersfancyapparelx.com"
                         }
                     },
                     {
@@ -174,7 +174,7 @@ def send_generic(recipient_id):
                         "subtitle": "This is subtitle",
                         "default_action": {
                             "type": "web_url",
-                            "url": "https://www.facebook.com"
+                            "url": "https://petersfancyapparelx.com/page?v=wui"
                         }
                     },
                 ]
