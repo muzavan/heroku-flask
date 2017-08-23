@@ -47,7 +47,7 @@ def webhook():
                     elif message_text == "hu":
                         send_whitelist(recipient_id)
                     elif message_text == "ho":
-                        send_sender_action(recipient_id)
+                        send_sender_action(sender_id)
                     else:
                         send_message(sender_id, "roger that!")
 
